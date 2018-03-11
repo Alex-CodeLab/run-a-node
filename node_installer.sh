@@ -132,6 +132,11 @@ choice=$(whiptail --title " Bitcoin Node installer" --radiolist \
 "btcd" "" off \
 "bitcoind" "" off 3>&1 1>&2 2>&3)
 
+exitstatus=$?
+if [ $exitstatus = 1 ]; then
+    exit 0
+fi
+
 if [ "$choice" = "c-lightning" ] ; then
     confirm_install
     inst_cli 
