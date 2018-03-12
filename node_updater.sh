@@ -9,7 +9,11 @@ fi
 function upd_cli() {
     echo "Update c-lightning ..."
     cd ${HOME}/lightning  &&
-    BCLI=`whereis lightning-cli | cut -d " " -f 2` &&   
+    BCLI=`whereis lightning-cli | cut -d ":" -f 2 | sed -e 's/^[[:space:]]*//'  ` &&   
+    if [-z "$BCLI" ]; then 
+        echo "lightning-cli not found ..."
+        exit 0
+    fi
     ${BCLI} stop
     sleep 4
     git pull
@@ -20,7 +24,11 @@ function upd_cli() {
 function upd_btcd() {
     echo "Update bitcoind"
     cd ${HOME}/bitcoin
-    BTC=`whereis bitcoin-cli | cut -d " " -f 2 `
+    BTC=`whereis bitcoin-cli | cut -d ":" -f 2| sed -e 's/^[[:space:]]*//' `
+    if [-z "$BTC" ]; then 
+        echo "bitcoin-cli not found ..."
+        exit 0
+    fi
     sleep 4 
     git pull 
     make 

@@ -26,7 +26,7 @@ function inst_cli() {
     mkdir -p ${HOME}/.lightning 
     echo -n "set a lightingnode name: "
     read NODENAME
-    printf "alias=${NODENAME} \nnetwork=testnet \nport=9735 \noverride-fee-rates=400/400/400" > ${HOME}/.lightning/config
+    printf "alias=${NODENAME}\nnetwork=testnet\nport=9735\noverride-fee-rates=400/400/400" > ${HOME}/.lightning/config
     echo "$(tput bold)c-lightning successfully installed.$(tput sgr0) "      
 }
 
@@ -110,7 +110,7 @@ function inst_btc(){
     mkdir -p ${HOME}/.bitcoin
     cp contrib/debian/examples/bitcoin.conf ${HOME}/.bitcoin
     NEW_ID=$(cat /dev/urandom | tr -dc 'a-zA-Z0-9' | fold -w 42 | head -n 1)
-    printf "\ntestnet=1 \nrpcuser=${USER} \nrpcpassword=${NEW_ID}" >> ${HOME}/.bitcoin/bitcoin.conf
+    printf "\ntestnet=1\nrpcuser=${USER}\nrpcpassword=${NEW_ID}" >> ${HOME}/.bitcoin/bitcoin.conf
 }
 
 
