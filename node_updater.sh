@@ -17,7 +17,7 @@ function upd_cli() {
     sudo make install
 }
 
-function upd_btcd() {
+function upd_btc() {
     echo "Update bitcoind"
     cd ${HOME}/bitcoin
     BTC=`whereis bitcoin-cli | cut -d " " -f 2 `
